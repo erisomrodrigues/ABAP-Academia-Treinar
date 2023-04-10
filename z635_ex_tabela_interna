@@ -1,0 +1,49 @@
+*&---------------------------------------------------------------------*
+*& Report Z635_EX_TABELA_INTERNA
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT z635_ex_tabela_interna.
+
+TYPES: BEGIN OF ty_estados,
+         uf        TYPE c LENGTH 2,
+         descricao TYPE c LENGTH 30,
+         pais      type c length 2,
+       END OF ty_estados.
+
+DATA it_estados TYPE TABLE OF ty_estados.
+DATA st_estados TYPE ty_estados.
+
+parameters p_uf type c length 2.
+
+st_estados-uf = 'MG'.
+st_estados-descricao = 'Minas Gerais'.
+st_estados-pais = 'BR'.
+append st_estados to it_estados.
+
+st_estados-uf = 'SP'.
+st_estados-descricao = 'São Paulo'.
+st_estados-pais = 'BR'.
+append st_estados to it_estados.
+
+
+st_estados-uf = 'RJ'.
+st_estados-descricao = 'Rio de Janeiro'.
+st_estados-pais = 'BR'.
+append st_estados to it_estados.
+
+st_estados-uf = 'PE'.
+st_estados-descricao = 'Pernanbuco'.
+st_estados-pais = 'BR'.
+append st_estados to it_estados.
+
+loop at it_estados into st_estados
+  where uf = p_uf.
+  write / st_estados-uf.
+  write / st_estados-descricao.
+  write / st_estados-pais.
+endloop.
+
+IF SY-SUBRC <> 0.
+  WRITE 'Nenhum UF foi encontrada'.
+endif.
