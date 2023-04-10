@@ -1,0 +1,16 @@
+*&---------------------------------------------------------------------*
+*& Report Z635_ERI_P01
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT z635_eri_p01.
+
+SELECTION-SCREEN BEGIN OF BLOCK bloco01 WITH FRAME TITLE TEXT-001.
+  PARAMETERS: p_nome TYPE c LENGTH 30 Obligatory,
+              p_data TYPE sy-datum Obligatory,
+              p_hora TYPE sy-uzeit Obligatory.
+SELECTION-SCREEN END OF BLOCK bloco01.
+
+write: /3 'Nome', p_nome,
+       /3 'Data Nasc', p_data,
+       /3 'Hora Nasc', p_hora.
