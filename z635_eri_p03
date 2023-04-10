@@ -1,0 +1,38 @@
+*&---------------------------------------------------------------------*
+*& Report Z635_ERI_P03
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT z635_eri_p03.
+
+SELECTION-SCREEN BEGIN OF BLOCK bloco1 WITH FRAME TITLE TEXT-001.
+
+PARAMETERS: p_valor1    TYPE p DECIMALS 2,
+            p_sinal     TYPE c LENGTH 1,
+            p_valor2    TYPE p DECIMALS 2.
+
+DATA:       v_resultado TYPE p DECIMALS 2.
+
+
+IF p_sinal     = '+'.
+   v_resultado = p_valor1 + p_valor2.
+    WRITE: 'A soma de',p_valor1,'+',p_valor2,'=',v_resultado.
+ELSE.
+  IF p_sinal     = '-'.
+   v_resultado = p_valor1 - p_valor2.
+    WRITE: 'A Subtração de',p_valor1,'-',p_valor2,'=',v_resultado.
+ELSE.
+  IF p_sinal     = '*'.
+   v_resultado = p_valor1 * p_valor2.
+    WRITE: 'A Multiplicação de',p_valor1,'*',p_valor2,'=',v_resultado.
+ELSE.
+  IF p_sinal     = '/'.
+   v_resultado = p_valor1 / p_valor2.
+    WRITE: 'A Divisão de',p_valor1,'/',p_valor2,'=',v_resultado.
+ELSE.
+    WRITE: 'Sinal invalido'.
+ENDIF.
+ENDIF.
+ENDIF.
+ENDIF.
+SELECTION-SCREEN END OF BLOCK bloco1.
