@@ -45,7 +45,7 @@ st_notas-disciplina = 'Matematica'.
 st_notas-nota = '10'.
 append st_notas to it_notas.
 
-* Imprimindo os valores
+* Lendo valores
 loop at it_notas into st_notas
   where nota >= p_notam.
 
